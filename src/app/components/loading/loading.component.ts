@@ -13,7 +13,7 @@ export class LoadingComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.router.navigate(['/home']);
-    }, 5000);
+    }, 7000);
   }
 
 }
