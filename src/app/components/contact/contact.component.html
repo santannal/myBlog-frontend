@@ -1,7 +1,15 @@
 <div class="back">
 
 </div>
-<div class="container colored-container p-5 rounded mb-5" style="margin-top: 7rem;">
+
+<!-- Mensagem de sucesso -->
+<div *ngIf="isSent" class="container d-flex justify-content-center align-items-center text-center"
+    style="margin-top: 7rem;">
+    <div class="alert fw-medium fs-4 p-4">
+        <b>Mensagem enviada com sucesso!</b>
+    </div>
+</div>
+<div class="container colored-container p-5 rounded mb-5" style="margin-top: 5rem;">
     <h1 class="text-center mb-2">Entre em <span class="text-danger">contato</span> conosco!</h1>
     <form #formEmail="ngForm" (ngSubmit)="sendEmail(formEmail)">
         <div class="row form-group text-start d-flex">

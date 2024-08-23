@@ -18,13 +18,13 @@ export class ContactComponent {
       this.emailService.sendEmail(form.value).subscribe(
         response => {
           console.log(response);
-          this.isSent = true;
         },
         error => {
           console.error('Erro ao enviar email', error);
         }
       );
       form.resetForm();
+      this.isSent = true;
     }
   }
 }
