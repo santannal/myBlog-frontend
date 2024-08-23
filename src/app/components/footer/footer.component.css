@@ -1,0 +1,56 @@
+.icoInstagram,
+.icoLinkedin,
+.icoGithub {
+    font-size: 3rem;
+    transition: color 0.3s, font-size 0.3s;
+    animation: shine 3s infinite;
+    cursor: pointer;
+}
+
+@keyframes shine {
+    0% {
+        color: #ff0084;
+    }
+
+    25% {
+        color: #fd1d1d;
+    }
+
+    50% {
+        color: #fcb045;
+    }
+
+    75% {
+        color: #fffc00;
+    }
+
+    100% {
+        color: #ff0084;
+    }
+}
+
+.icoInstagram:hover,
+.icoGithub:hover,
+.icoLinkedin:hover {
+    font-size: 3.5rem;
+}
+
+.socialsmedias {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.socialsmedias li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.allfooter {
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-copyright {
+    background-color: #1c1c1c;
+}

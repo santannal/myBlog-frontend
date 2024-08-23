@@ -1,0 +1,30 @@
+<div class="back">
+
+</div>
+<div class="container colored-container p-5 rounded mb-5" style="margin-top: 7rem;">
+    <h1 class="text-center mb-2">Entre em <span class="text-danger">contato</span> conosco!</h1>
+    <form #formEmail="ngForm" (ngSubmit)="sendEmail(formEmail)">
+        <div class="row form-group text-start d-flex">
+            <div class="input-wrapper col-md-5">
+                <input type="text" id="name" class="form-control input-field text-light" name="name" ngModel required />
+                <label for="name" class="input-label text-light fs-5">NOME</label>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="input-wrapper col-md-6">
+                <input type="email" id="email" class="form-control input-field text-light" name="email" ngModel
+                    required />
+                <label for="email" class="input-label text-light fs-5">E-MAIL</label>
+            </div>
+        </div>
+        <div class="row form-group mt-1">
+            <div class="input-wrapper col-md-12">
+                <textarea cols="30" rows="4" name="text" id="text" class="form-control input-field text-light" ngModel
+                    required></textarea>
+                <label for="text" class="input-label fs-5 text-white">MENSAGEM</label>
+            </div>
+        </div>
+        <div class="format-button mt-4 text-center">
+            <button class="btn btn-danger w-50" type="submit" [disabled]="formEmail.invalid">Enviar</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,69 @@
+<div class="back">
+
+</div>
+<div class="container" style="margin-top: 8rem;">
+    <div class="row mt-5 mb-5">
+        <div class="col-md-4 mb-4 mb-md-0">
+            <div class="card border-0 bg-dark text-light text-center p-1 w-100">
+                <div class="d-flex justify-content-center">
+                    <img src="../../../assets/profile.jpeg" class="mt-4 neon-border card-img-top" alt="user image">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center fs-3 mt-1 text-monospace">Leonardo Oliveira</h5>
+                    <p class="card-text text-center fs-5 text-secondary text-monospace">- Gestor de Tecnologia -</p>
+                    <a href="https://github.com/santannal" target="_blank"
+                        class="btn btn-outline-danger d-flex justify-content-center">GitHub</a>
+                    <hr class="mt-4 mb-4">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 bg-dark rounded shadow">
+            <div class="perso-color p-3 mb-3 rounded shadow mt-3">
+                <form #formNewPost="ngForm">
+                    <h3 class="text-center mb-4 text-monospace">Crie um <span class="text-danger">
+                            < </span><span class="text-danger">POST ></span></h3>
+                    <div class="form-group mb-3">
+                        <div class="input-wrapper">
+                            <input type="text" id="name" class="form-control input-field text-light"
+                                [(ngModel)]="post.name" name="name" required />
+                            <label for="name" class="input-label text-light fs-5">NOME</label>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="input-wrapper">
+                            <input type="text" id="email" class="form-control input-field text-light"
+                                [(ngModel)]="post.email" name="email" required />
+                            <label for="email" class="input-label text-light fs-5">E-MAIL</label>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <div class="input-wrapper">
+                            <textarea cols="30" [(ngModel)]="post.message" rows="4" name="texto" id="texto"
+                                class="form-control input-field text-light" required></textarea>
+                            <label for="texto" class="input-label fs-5 text-white">MENSAGEM</label>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-outline-danger w-100 w-md-25" (click)="sendPost()"
+                            [disabled]="formNewPost.invalid" type="submit">Publicar</button>
+                    </div>
+                </form>
+                <hr class="mt-5 mb-5">
+                <h3 class="text-center mb-4 text-monospace">Comentários adicionados:</h3>
+                <div class="container">
+                    <div class="card mb-4 text-light shadow" *ngFor="let pub of listPost">
+                        <div class="card-header" style="background-color: #2a2f33;">
+                            <h5 class="card-title text-start">{{pub.name}}</h5>
+                            <p class="card-title text-center fs-6">
+                                <{{pub.email}}>
+                            </p>
+                        </div>
+                        <div class="card-body text-light" style="background-color: #3e454b">
+                            <span class="fw-semibold text-danger">Mensagem:</span> {{pub.message}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
