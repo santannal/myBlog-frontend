@@ -14,6 +14,13 @@
                     <a href="https://github.com/santannal" target="_blank"
                         class="btn btn-outline-danger d-flex justify-content-center">GitHub</a>
                     <hr class="mt-4 mb-4">
+                    <div class="form-group mb-3">
+                        <h6 class="mb-3 text-monospace text-center fs-5">Encontrar por Nome</h6>
+                        <input type="text" class="form-control mb-3 w-100 bg-dark b-none text-light"
+                            placeholder="Digite o nome aqui..." [(ngModel)]=" searchTerm">
+                        <button class="btn btn-outline-danger w-100" (click)="filterComments()">Pesquisar</button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -49,9 +56,9 @@
                     </div>
                 </form>
                 <hr class="mt-5 mb-5">
-                <h3 class="text-center mb-4 text-monospace">Comentários adicionados:</h3>
-                <div class="container">
-                    <div class="card mb-4 text-light shadow" *ngFor="let pub of listPost">
+                <h3 class="text-center mb-4 text-monospace">Comentários <span class="text-danger">Filtrados</span></h3>
+                <div class=" container">
+                    <div class="card mb-4 text-light shadow" *ngFor="let pub of filteredPosts">
                         <div class="card-header" style="background-color: #2a2f33;">
                             <h5 class="card-title text-start">{{pub.name}}</h5>
                             <p class="card-title text-center fs-6">

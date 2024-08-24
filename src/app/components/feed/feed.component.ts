@@ -10,7 +10,9 @@ import { Post } from '../../models/Post';
 export class FeedComponent implements OnInit {
 
   listPost: Post[] = [];
+  filteredPosts: Post[] = [];
   post: Post = new Post();
+  searchTerm: string = '';
 
   constructor(private postService: PostService) { }
 
@@ -21,6 +23,7 @@ export class FeedComponent implements OnInit {
   findPosts() {
     this.postService.getPosts().subscribe((data: Post[]) => {
       this.listPost = data;
+      this.filteredPosts = data;
     }, error => {
       console.error('Erro ao buscar posts:', error);
     });
@@ -30,11 +33,22 @@ export class FeedComponent implements OnInit {
     this.postService.postPosts(this.post).subscribe(
       (data: Post) => {
         this.listPost.push(data);
+        this.filteredPosts.push(data);
         this.post = new Post();
       },
       error => {
         console.error('Erro ao publicar post:', error);
       }
     );
+  }
+
+  filterComments() {
+    if (this.searchTerm.trim() === '') {
+      this.filteredPosts = this.listPost;
+    } else {
+      this.filteredPosts = this.listPost.filter(post =>
+        post.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
   }
 }
