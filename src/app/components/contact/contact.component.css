@@ -51,11 +51,8 @@
 
 .alert {
     width: 80%;
-    /* height: 100vh; */
-    background: linear-gradient(45deg, #ff0084, #fd1d1d, #fcb045, #fffc00);
-    animation: shine 8s ease infinite;
-    border: none;
 }
+
 
 @keyframes shine {
     0% {
