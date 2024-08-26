@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailService } from '../../services/email.service';
 
 @Component({
@@ -11,20 +11,32 @@ export class ContactComponent {
 
   isSent = false;
 
-  constructor(private emailService: EmailService) { }
+  formGroupEmail: FormGroup;
 
-  sendEmail(form: NgForm) {
-    if (form.valid) {
-      this.emailService.sendEmail(form.value).subscribe(
+  constructor(private emailService: EmailService, private formBuilder: FormBuilder) {
+    this.formGroupEmail = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required, Validators.minLength(5)]],
+    });
+  }
+
+  sendEmail() {
+    if (this.formGroupEmail.valid) {
+      this.emailService.sendEmail(this.formGroupEmail.value).subscribe(
         response => {
           console.log(response);
+          this.isSent = true;
         },
         error => {
           console.error('Erro ao enviar email', error);
         }
       );
-      form.resetForm();
-      this.isSent = true;
+      this.formGroupEmail.reset();
     }
   }
+
+  get efgName() { return this.formGroupEmail.get("name") }
+  get efgEmail() { return this.formGroupEmail.get("email") }
+  get efgMessage() { return this.formGroupEmail.get("message") }
 }

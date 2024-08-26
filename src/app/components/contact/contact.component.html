@@ -1,9 +1,7 @@
-<div class="back">
-
-</div>
+<div class="back"></div>
 
 <!-- Mensagem de sucesso -->
-<div *ngIf="isSent" class="container d-flex justify-content-center align-items-center text-center"
+<div *ngIf="ngFormEmail.submitted" class="container d-flex justify-content-center align-items-center text-center"
     style="margin-top: 7rem;">
     <div class="alert alert-dark fw-medium fs-4 p-4">
         <b>Mensagem enviada com sucesso!</b>
@@ -12,28 +10,44 @@
 
 <div class="container colored-container p-5 rounded mb-5" style="margin-top: 5rem;">
     <h1 class="text-center mb-2">Entre em <span style="color: rgb(248, 152, 255);">Contato</span> Comigo!</h1>
-    <form #formEmail="ngForm" (ngSubmit)="sendEmail(formEmail)">
+    <form [formGroup]="formGroupEmail" (ngSubmit)="sendEmail()" #ngFormEmail="ngForm">
         <div class="row form-group text-start d-flex">
             <div class="input-wrapper col-md-5">
-                <input type="text" id="name" class="form-control input-field text-light" name="name" ngModel required />
+                <input type="text" id="name" class="form-control input-field text-light" formControlName="name" />
                 <label for="name" class="input-label text-light fs-5">NOME</label>
+                <div *ngIf="formGroupEmail.get('name')?.touched || formGroupEmail.get('name')?.dirty">
+                    <small *ngIf="efgName?.errors?.['required']" class="form-text text-danger">*Nome é requerido</small>
+                    <small *ngIf="efgName?.errors?.['minlength']" class="form-text text-danger">*Mínimo de 3
+                        caracteres</small>
+                </div>
             </div>
             <div class="col-md-1"></div>
             <div class="input-wrapper col-md-6">
-                <input type="email" id="email" class="form-control input-field text-light" name="email" ngModel required
-                    email #emailModel="ngModel" />
+                <input type="email" id="email" class="form-control input-field text-light" formControlName="email" />
                 <label for="email" class="input-label text-light fs-5">E-MAIL</label>
+                <div *ngIf="formGroupEmail.get('email')?.touched || formGroupEmail.get('email')?.dirty">
+                    <small *ngIf="efgEmail?.errors?.['required']" class="form-text text-danger">*Email é
+                        requerido</small>
+                    <small *ngIf="efgEmail?.errors?.['email']" class="form-text text-danger">*Formato de email
+                        inválido</small>
+                </div>
             </div>
         </div>
         <div class="row form-group mt-1">
             <div class="input-wrapper col-md-12">
-                <textarea cols="30" rows="4" name="text" id="text" class="form-control input-field text-light" ngModel
-                    required></textarea>
+                <textarea cols="30" rows="4" id="text" class="form-control input-field text-light"
+                    formControlName="message"></textarea>
                 <label for="text" class="input-label fs-5 text-white">MENSAGEM</label>
+                <div *ngIf="formGroupEmail.get('message')?.touched || formGroupEmail.get('message')?.dirty">
+                    <small *ngIf="efgMessage?.errors?.['required']" class="form-text text-danger">*Mensagem é
+                        requerida</small>
+                    <small *ngIf="efgMessage?.errors?.['minlength']" class="form-text text-danger">*Mínimo de 5
+                        caracteres</small>
+                </div>
             </div>
         </div>
         <div class="format-button mt-4 text-center">
-            <button class="btn btn-success w-50" type="submit" [disabled]="formEmail.invalid || !emailModel.valid">
+            <button class="btn btn-success w-50" type="submit">
                 Enviar
             </button>
         </div>
