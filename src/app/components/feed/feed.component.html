@@ -39,7 +39,7 @@
                     <div class="form-group mb-3">
                         <div class="input-wrapper">
                             <input type="text" id="email" class="form-control input-field text-light"
-                                [(ngModel)]="post.email" name="email" required />
+                                [(ngModel)]="post.email" name="email" email #emailModel="ngModel" required />
                             <label for="email" class="input-label text-light fs-5">E-MAIL</label>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="d-flex justify-content-end">
                         <button class="btn btn-success w-100 w-md-25" (click)="sendPost()"
-                            [disabled]="formNewPost.invalid" type="submit">Publicar</button>
+                            [disabled]="formNewPost.invalid || !emailModel.valid" type="submit">Publicar</button>
                     </div>
                 </form>
                 <hr class="mt-5 mb-5">
