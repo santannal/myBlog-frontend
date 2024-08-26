@@ -32,7 +32,7 @@ export class FeedComponent implements OnInit {
   sendPost() {
     this.postService.postPosts(this.post).subscribe(
       (data: Post) => {
-        this.listPost.push(data);
+        // this.listPost.push(data);
         this.filteredPosts.push(data);
         this.post = new Post();
       },
