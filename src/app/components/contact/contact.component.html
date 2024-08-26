@@ -9,6 +9,7 @@
         <b>Mensagem enviada com sucesso!</b>
     </div>
 </div>
+
 <div class="container colored-container p-5 rounded mb-5" style="margin-top: 5rem;">
     <h1 class="text-center mb-2">Entre em <span style="color: rgb(248, 152, 255);">Contato</span> Comigo!</h1>
     <form #formEmail="ngForm" (ngSubmit)="sendEmail(formEmail)">
@@ -19,8 +20,8 @@
             </div>
             <div class="col-md-1"></div>
             <div class="input-wrapper col-md-6">
-                <input type="email" id="email" class="form-control input-field text-light" name="email" ngModel
-                    required />
+                <input type="email" id="email" class="form-control input-field text-light" name="email" ngModel required
+                    email #emailModel="ngModel" />
                 <label for="email" class="input-label text-light fs-5">E-MAIL</label>
             </div>
         </div>
@@ -32,7 +33,10 @@
             </div>
         </div>
         <div class="format-button mt-4 text-center">
-            <button class="btn btn-outline-success w-50" type="submit" [disabled]="formEmail.invalid">Enviar</button>
+            <button class="btn btn-outline-success w-50" type="submit"
+                [disabled]="formEmail.invalid || !emailModel.valid">
+                Enviar
+            </button>
         </div>
     </form>
 </div>
