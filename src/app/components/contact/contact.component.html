@@ -1,16 +1,16 @@
 <div class="back"></div>
 
 <!-- Mensagem de sucesso -->
-<div *ngIf="ngFormEmail.submitted" class="container d-flex justify-content-center align-items-center text-center"
+<div *ngIf="show" class="container d-flex justify-content-center align-items-center text-center"
     style="margin-top: 7rem;">
-    <div class="alert alert-dark fw-medium fs-4 p-4">
-        <b>Mensagem enviada com sucesso!</b>
+    <div class="alert alert-success fw-medium fs-4 p-4">
+        <b>Mensagem enviada com sucesso! Entraremos em contato se necessário.</b>
     </div>
 </div>
 
 <div class="container colored-container p-5 rounded mb-5" style="margin-top: 5rem;">
     <h1 class="text-center mb-2">Entre em <span style="color: rgb(248, 152, 255);">Contato</span> Comigo!</h1>
-    <form [formGroup]="formGroupEmail" (ngSubmit)="sendEmail()" #ngFormEmail="ngForm">
+    <form [formGroup]="formGroupEmail" (ngSubmit)="sendEmail()" #ngForm="ngForm">
         <div class="row form-group text-start d-flex">
             <div class="input-wrapper col-md-5">
                 <input type="text" id="name" class="form-control input-field text-light" formControlName="name" />

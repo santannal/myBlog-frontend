@@ -10,6 +10,7 @@ import { EmailService } from '../../services/email.service';
 export class ContactComponent {
 
   isSent = false;
+  show = false;
 
   formGroupEmail: FormGroup;
 
@@ -23,6 +24,10 @@ export class ContactComponent {
 
   sendEmail() {
     if (this.formGroupEmail.valid) {
+      this.show = true;
+      setTimeout(() => {
+        this.show = false;
+      }, 3000);
       this.emailService.sendEmail(this.formGroupEmail.value).subscribe(
         response => {
           console.log(response);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/Post';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-feed',
@@ -13,8 +14,15 @@ export class FeedComponent implements OnInit {
   filteredPosts: Post[] = [];
   post: Post = new Post();
   searchTerm: string = '';
+  formGroupFeed: FormGroup;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, private formBuilder: FormBuilder) {
+    this.formGroupFeed = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required, Validators.minLength(5)]],
+    });
+  }
 
   ngOnInit(): void {
     this.findPosts();
@@ -30,16 +38,25 @@ export class FeedComponent implements OnInit {
   }
 
   sendPost() {
-    this.postService.postPosts(this.post).subscribe(
-      (data: Post) => {
-        // this.listPost.push(data);
-        this.filteredPosts.push(data);
-        this.post = new Post();
-      },
-      error => {
-        console.error('Erro ao publicar post:', error);
-      }
-    );
+    if (this.formGroupFeed.valid) {
+      this.postService.postPosts(this.post).subscribe(
+        (data: Post) => {
+          // this.listPost.push(data);
+          this.filteredPosts.push(data);
+          this.post = new Post();
+          this.formGroupFeed.markAsUntouched();
+          this.formGroupFeed.markAsPristine();
+        },
+        error => {
+          console.error('Erro ao publicar post:', error);
+        }
+      );
+    }
+  }
+
+  //deixar um input como tocado, ao clicarem
+  markFieldAsTouched(field: string) {
+    this.formGroupFeed.get(field)?.markAsTouched();
   }
 
   filterComments() {
@@ -51,4 +68,8 @@ export class FeedComponent implements OnInit {
       );
     }
   }
+
+  get efgName() { return this.formGroupFeed.get("name") }
+  get efgEmail() { return this.formGroupFeed.get("email") }
+  get efgMessage() { return this.formGroupFeed.get("message") }
 }
