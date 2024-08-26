@@ -1,9 +1,21 @@
-.icoInstagram,
-.icoLinkedin,
+.icoLinkedin {
+    font-size: 3rem;
+    transition: color 0.3s, font-size 0.3s;
+    color: rgb(0, 157, 255);
+    cursor: pointer;
+}
+
+.icoInstagram {
+    font-size: 3rem;
+    transition: color 0.3s, font-size 0.3s;
+    color: rgb(245, 75, 118);
+    cursor: pointer;
+}
+
 .icoGithub {
     font-size: 3rem;
     transition: color 0.3s, font-size 0.3s;
-    animation: shine 3s infinite;
+    color: rgb(255, 255, 255);
     cursor: pointer;
 }
 
