@@ -1,27 +1,44 @@
-# Myblog
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+# 📖 Blog Front-End
 
-## Development server
+This repository contains the front-end code of a blog, developed with Angular and Bootstrap. The project is connected to a Java backend to manage posts and comments.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## ✨ Overview
 
-## Code scaffolding
+The goal of this project is to create a simple and functional blog interface with a modern and minimalist design. The front-end is built with Angular, using Bootstrap for responsiveness and styling. The primary design colors are black and white, complemented by green, lilac, and slate gray for contrast and details.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🚀 Features
 
-## Build
+- **Display Posts**: List available posts with title, email, and message.
+- **Add New Post**: Form to create new posts with field validations.
+- **Search Posts**: Functionality to filter posts by the author's name.
+- **Real-time Validations**: Error messages displayed dynamically to guide the user in filling out the fields.
+- **Responsive Design**: Layout adapted for different screen sizes.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🛠️ Technologies Used
 
-## Running unit tests
+- **Angular**: Front-end framework used to develop the application in a modular and scalable way.
+- **Bootstrap**: CSS library used to create a responsive and styled layout.
+- **Java Spring Boot**: Back-end framework used to provide the REST API that powers the blog.
+- **TypeScript**: Programming language used in the development of the Angular application.
+- **HTML/CSS**: Basic markup and styles for the user interface structure.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🎨 Color Scheme
 
-## Running end-to-end tests
+- **Black (#000000)** and **White (#FFFFFF)**: Main layout colors used for text and background.
+- **Green (#00ff22)**: Used for buttons and links, highlighting main user actions.
+- **Lilac (rgb(248, 152, 255))**: Used to highlight important elements, such as titles and main sections.
+- **Slate Gray (#708090)**: Used in backgrounds and borders to separate sections and create subtle contrasts.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 📝 How to Run the Project
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. *Clone the Repository:*
+   ```bash
+   git clone https://github.com/santannal/blog-frontend.git
+   cd blog-frontend
+   ```
+2. *Install dependencies and start the project:*
+   ```bash
+   npm install
+   ng serve
+   ```
