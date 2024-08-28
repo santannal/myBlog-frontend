@@ -24,17 +24,19 @@ export class ContactComponent {
 
   sendEmail() {
     if (this.formGroupEmail.valid) {
-      this.show = true;
-      setTimeout(() => {
-        this.show = false;
-      }, 3000);
-      this.emailService.sendEmail(this.formGroupEmail.value).subscribe(
+      const emailData = this.formGroupEmail.value;
+      console.log('Enviando dados:', emailData); // Verifique se 'message' está presente
+      this.emailService.sendEmail(emailData).subscribe(
         response => {
-          console.log(response);
+          console.log('Resposta do backend:', response);
           this.isSent = true;
+          setTimeout(() => {
+            this.show = false;
+          }, 3000);
         },
         error => {
-          console.error('Erro ao enviar email', error);
+          console.error('Erro ao enviar email:', error);
+          this.show = false;
         }
       );
       this.formGroupEmail.reset();
